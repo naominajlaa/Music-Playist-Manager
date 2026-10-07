@@ -1,14 +1,15 @@
 from playlist import myPlaylist
 
+
 def main():
     playlist = myPlaylist()
 
     # Data awal
-    playlist.add_song("Ditto", "NewJeans", 185)
-    playlist.add_song("Jellyous", "ILLIT", 163)
-    playlist.add_song("Spicy", "aespa", 197)
-    playlist.add_song("What You Want", "CORTIS", 180)
-    playlist.add_song("Rebel Heart", "IVE", 188)
+    playlist.addSong("Ditto", "NewJeans", 185)
+    playlist.addSong("Jellyous", "ILLIT", 163)
+    playlist.addSong("Spicy", "aespa", 197)
+    playlist.addSong("What You Want", "CORTIS", 180)
+    playlist.addSong("Rebel Heart", "IVE", 188)
 
     while True:
         print("\n==============================")
@@ -27,13 +28,13 @@ def main():
 
         # Menampilkan playlist
         if pilihan == "1":
-            playlist.view_playlist()
+            playlist.viewPlaylist()
 
         # Mencari lagu
         elif pilihan == "2":
             song = input("Masukkan judul lagu: ")
 
-            hasil = playlist.search_song(song)
+            hasil = playlist.searchSong(song)
 
             if hasil:
                 print("Lagu ditemukan!")
@@ -45,14 +46,14 @@ def main():
 
         # Sorting berdasarkan durasi
         elif pilihan == "3":
-            playlist.duration_sorting()
+            playlist.durationSorting()
 
             print("Playlist berhasil diurutkan!")
-            playlist.view_playlist()
+            playlist.viewPlaylist()
 
         # Menghitung total durasi
         elif pilihan == "4":
-            total = playlist.total_duration()
+            total = playlist.totalDuration()
 
             menit = total // 60
             detik = total % 60
@@ -66,7 +67,7 @@ def main():
             artist = input("Artis         : ")
             duration = int(input("Durasi (detik): "))
 
-            playlist.add_song(song, artist, duration)
+            playlist.addSong(song, artist, duration)
 
             print("Lagu berhasil ditambahkan!")
 
@@ -74,7 +75,7 @@ def main():
         elif pilihan == "6":
             song = input("Masukkan judul lagu yang ingin dihapus: ")
 
-            berhasil = playlist.remove_song(song)
+            berhasil = playlist.removeSong(song)
 
             if berhasil:
                 print("Lagu berhasil dihapus!")
@@ -90,4 +91,5 @@ def main():
             print("Pilihan tidak tersedia.")
 
 
-main()
+if __name__ == "__main__":
+    main()
