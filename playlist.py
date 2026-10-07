@@ -4,6 +4,11 @@ class myPlaylist:
         self.songs = []
         self.current_song_index = 0
 
+    def convertSecondsToMinutes(self, seconds):
+            minutes = seconds // 60
+            remaining_seconds = seconds % 60
+            return f"{minutes:02d}:{remaining_seconds:02d}"
+
     def addSong(self, song, artist, duration):
         song_data = {
             'title': song,
@@ -12,15 +17,10 @@ class myPlaylist:
         }
         # Menambahkan data lagu ke array/list.
         self.songs.append(song_data)
-    
-    def convertSecondsToMinutes(self, seconds):
-        minutes = seconds // 60
-        remaining_seconds = seconds % 60
-        return f"{minutes:02d}:{remaining_seconds:02d}"
 
     def removeSong(self, song):
         for i, song_data in enumerate(self.songs):
-            if song_data['title'] == song:
+            if song_data['title'].lower() == song.lower():
                 del self.songs[i]
                 return True
         return False
@@ -35,7 +35,7 @@ class myPlaylist:
     # Linear Searching: mencari lagu berdasarkan judul.
     def searchSong(self, song):
         for song_data in self.songs:
-            if song_data['title'] == song:
+            if song_data['title'].lower() == song.lower():
                 return song_data
         return None
 

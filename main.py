@@ -40,7 +40,10 @@ def main():
                 print("Lagu ditemukan!")
                 print(f"Judul    : {hasil['title']}")
                 print(f"Artis    : {hasil['artist']}")
-                print(f"Durasi   : {hasil['duration']} detik")
+                print(
+                    f"Durasi   : "
+                    f"{playlist.convertSecondsToMinutes(hasil['duration'])}"
+                )
             else:
                 print("Lagu tidak ditemukan.")
 
@@ -55,11 +58,11 @@ def main():
         elif pilihan == "4":
             total = playlist.totalDuration()
 
-            menit = total // 60
-            detik = total % 60
-
             print("\n===== TOTAL DURASI =====")
-            print(f"Total durasi : {menit} menit {detik} detik")
+            print(
+                f"Total durasi : "
+                f"{playlist.convertSecondsToMinutes(total)}"
+            )
 
         # Menambah lagu
         elif pilihan == "5":
@@ -91,5 +94,4 @@ def main():
             print("Pilihan tidak tersedia.")
 
 
-if __name__ == "__main__":
     main()
