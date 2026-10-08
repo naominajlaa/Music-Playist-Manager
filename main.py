@@ -1,18 +1,10 @@
 from playlist import myPlaylist
 
-
 def main():
-    playlist = myPlaylist()
-
-    # Data awal
-    playlist.addSong("Ditto", "NewJeans", 185)
-    playlist.addSong("Jellyous", "ILLIT", 163)
-    playlist.addSong("Spicy", "aespa", 197)
-    playlist.addSong("What You Want", "CORTIS", 180)
-    playlist.addSong("Rebel Heart", "IVE", 188)
+    playlist = myPlaylist()    
 
     while True:
-        print("\n==============================")
+        print("==============================")
         print("     MUSIC PLAYLIST MANAGER")
         print("==============================")
         print("1. Lihat Playlist")
@@ -50,7 +42,7 @@ def main():
         # Sorting berdasarkan durasi
         elif pilihan == "3":
             playlist.durationSorting()
-
+            playlist.saveData()
             print("Playlist berhasil diurutkan!")
             playlist.viewPlaylist()
 
@@ -71,27 +63,28 @@ def main():
             duration = int(input("Durasi (detik): "))
 
             playlist.addSong(song, artist, duration)
-
+            playlist.saveData()
             print("Lagu berhasil ditambahkan!")
 
         # Menghapus lagu
         elif pilihan == "6":
             song = input("Masukkan judul lagu yang ingin dihapus: ")
-
             berhasil = playlist.removeSong(song)
 
             if berhasil:
+                playlist.saveData()
                 print("Lagu berhasil dihapus!")
             else:
                 print("Lagu tidak ditemukan.")
 
         # Keluar
         elif pilihan == "7":
+            print("\n===== KELUAR =====")
             print("Terima kasih sudah menggunakan Music Playlist Manager!")
             break
 
         else:
             print("Pilihan tidak tersedia.")
 
-
+if __name__ == "__main__":
     main()
